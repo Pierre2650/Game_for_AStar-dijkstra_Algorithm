@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
     //private PlayerHealth myHealth;
     private SpriteRenderer mySpr;
     //private Animator myAni;
+    private Rigidbody2D myRB;
     
 
     [Header("Projectile Prefab")]
@@ -18,42 +19,35 @@ public class PlayerController : MonoBehaviour
 
     [Header("Mouvement")]
     [SerializeField] private float speed = 0f;
-    [SerializeField] private float duration = 0f;
-    private Coroutine moveC = null;
-    private float x = 0f, y = 0f;
+
     private  Vector2 horizontal = new Vector2(0.5f, -0.25f) , vertical = new Vector2(0.5f, 0.25f);
-    private Vector2 velocity = Vector2.zero;
+    private Vector2 velocity;
+    private Vector2 input = Vector2.zero;
     private Vector2 startPos;
 
     [Header("Animations")]
     private bool playDeadAnimation;
-    //public GameObject boostFX;
-
-    private Player_Controls controls;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
+
     void Start()
     {
         //myHealth = GetComponent<PlayerHealth>();
       
         mySpr = GetComponent<SpriteRenderer>();
+        myRB = GetComponent<Rigidbody2D>();
         //myAni = GetComponent<Animator>();
 
         startPos = transform.position;
-        controls = new Player_Controls();
-        controls.Controller.Enable();
+ 
 
 
-        // go back to vector
-        controls.Controller.Right.performed += goRight;
-        controls.Controller.Left.performed += goLeft;
-        controls.Controller.Up.performed += goUp;
-        controls.Controller.Down.performed += goDown;
     }
 
     private void FixedUpdate()
     {
-       
+
+        myRB.AddForce(velocity.normalized * speed);
         
     }
 
@@ -71,16 +65,10 @@ public class PlayerController : MonoBehaviour
         }
 
 
-    }
+        velocity = horizontal * input.x + vertical * input.y;
+        //transform.position += (Vector3)(velocity.normalized * speed * Time.deltaTime);
 
-    private void LateUpdate()
-    {
-        if (velocity != Vector2.zero && moveC == null)
-        {
-            moveC = StartCoroutine(Move(velocity));
-        }
     }
-
 
 
     private void setSprite()
@@ -132,85 +120,21 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    private IEnumerator Move(Vector2 dir)
-    {
-        velocity = Vector2.zero;
-
-        Vector2 start = transform.position;
-        Vector2 end = transform.position + (Vector3)(dir);
-        float t = 0;
-
-        while (t < 1) {
-            t += Time.deltaTime / duration;
-            transform.position = Vector3.Lerp(start, end, t);
-            yield return null;
-        }
-        moveC = null;
-    }
-
+ 
    
-
-    public void goRight(InputAction.CallbackContext context)
+    public void movementInput(InputAction.CallbackContext context)
     {
-        //if(myHealth.isDead) { return; }
-
-        //Mouvement(horizontal);
-
-        if (moveC == null) {
-            velocity+= horizontal;
-        }
-
-    }
-
-    public void goLeft(InputAction.CallbackContext context)
-    {
-        //if(myHealth.isDead) { return; }
-
-        //Mouvement(-horizontal);
-
-        if (moveC == null)
+        if (context.performed)
         {
-            velocity -= horizontal;
+            input = context.ReadValue<Vector2>();
+        }
+        else if (context.canceled)
+        {
+            input = Vector2.zero;
         }
     }
 
-    public void goUp(InputAction.CallbackContext context)
-    {
-        //if(myHealth.isDead) { return; }
 
-        //Mouvement(vertical);
-
-        if (moveC == null)
-        {
-            velocity += vertical;
-        }
-
-
-    }
-
-    public void goDown(InputAction.CallbackContext context)
-    {
-        //if(myHealth.isDead) { return; }
-
-        //Mouvement(-vertical);
-        if (moveC == null)
-        {
-            velocity -= vertical;
-        }
-
-
-    }
-
-    public void Attack(InputAction.CallbackContext context) {
-
-        /*if (context.started && !myHealth.isDead)
-        {
-            attacking = true;
-            
-        }*/
-
-        if(context.canceled) { attacking = false; }
-    }
 
     private IEnumerator attackOnColdown()
     {
