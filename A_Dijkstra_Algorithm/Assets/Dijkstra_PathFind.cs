@@ -37,6 +37,7 @@ public class Dijkstra_PathFind : MonoBehaviour
     private List<Node> unVisited = new List<Node>();
     private List<Node> visited = new List<Node>();
     private List<Vector2> invertedPath = new List<Vector2>();
+    private float searchColdownElapsed = 0;
 
     private Node currentNode;
 
@@ -47,37 +48,58 @@ public class Dijkstra_PathFind : MonoBehaviour
     {
         currentNode = new Node(transform.position, 0);
         visited.Add(currentNode);
+        calculatePath();
+        StartCoroutine(followPath());
+    }
 
-        int temp = 0  ;
-        while (temp < 999) {
+    private void Update()
+    {
+        
+        searchColdownElapsed += Time.deltaTime;
+        if(searchColdownElapsed > 2)
+        {
+            StopAllCoroutines();
+            visited.Clear();
+            unVisited.Clear();
+            invertedPath.Clear();
 
-            currentNode = calculatePath(currentNode);
+            currentNode = new Node(transform.position, 0);
+            visited.Add(currentNode);
+            calculatePath();
+            StartCoroutine(followPath());
 
-            if (Vector2.Distance(currentNode.position, target.position) < 0.1 )
+            searchColdownElapsed = 0;
+        }
+    }
+
+    private void calculatePath()
+    {
+        int temp = 0;
+        while (temp < 9999)
+        {
+
+            currentNode = findNextNeightbor(currentNode);
+
+            if (Vector2.Distance(currentNode.position, target.position) < 0.1)
             {
                 break;
             }
 
             temp++;
-            
+
         }
         temp = 0;
 
-        invertedPath.Add(currentNode.position);
 
+        invertedPath.Add(currentNode.position);
         Node nextNode = currentNode.parent;
-        //invertedPath.Add(nextNode.position);
 
         while (nextNode != null && temp < 999)
         {
             invertedPath.Add(nextNode.position);
             nextNode = nextNode.parent;
-            //invertedPath.Add(nextNode.position);
-
             temp++;
         }
-
-        StartCoroutine(followPath());
     }
 
     private bool obstacleCheck( Vector2 toTest)
@@ -94,7 +116,7 @@ public class Dijkstra_PathFind : MonoBehaviour
             return false;
         }
     }
-    private Node calculatePath(Node currentNode)
+    private Node findNextNeightbor(Node currentNode)
     {
         List<Vector2> neighbors = new List<Vector2>();
         // we go clockwise
@@ -155,18 +177,21 @@ public class Dijkstra_PathFind : MonoBehaviour
 
         while (i>0)
         {
+            Vector2 start = transform.position;
+
             while (elapsedT < 1)
             {
 
-                transform.position = Vector2.Lerp(transform.position, invertedPath[i], elapsedT);
+                transform.position = Vector2.Lerp(start, invertedPath[i], elapsedT);
 
                 elapsedT += Time.deltaTime * speed;
-               // yield return null;
+               yield return null;
             }
 
+            transform.position = invertedPath[i];
             elapsedT = 0;
             i--;
-            yield return new WaitForSeconds(Time.deltaTime);
+            //yield return new WaitForSeconds(Time.deltaTime);
         }
     }
 
@@ -198,9 +223,13 @@ public class Dijkstra_PathFind : MonoBehaviour
             Gizmos.color = Color.blue;
             Gizmos.DrawWireSphere(currentNode.position, 0.2f);
         }
-        
 
 
+        if (target != null)
+        {
+            Gizmos.color = Color.black;
+            Gizmos.DrawWireSphere(target.position, 0.2f);
+        }
 
     }
 
