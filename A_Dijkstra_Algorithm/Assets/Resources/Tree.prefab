@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1604669786865575639}
   - component: {fileID: 5155005983260182565}
   m_Layer: 6
-  m_Name: Wall
+  m_Name: Tree
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -77,7 +77,7 @@ SpriteRenderer:
   m_SortingLayerID: 1408696213
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: -1838252668, guid: 7de6dfa7eda87b248a7d6460dfe74458, type: 3}
+  m_Sprite: {fileID: -1089470381, guid: 0879a4f1f5364544597de440787f659f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

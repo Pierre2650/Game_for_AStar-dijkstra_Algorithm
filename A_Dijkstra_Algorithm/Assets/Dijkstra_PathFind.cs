@@ -23,7 +23,7 @@ public class Dijkstra_PathFind : MonoBehaviour
 
     
     private float searchColdownElapsed = 0;
-    public float searchColdown = 3;
+    private float searchColdown = 3;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -35,6 +35,17 @@ public class Dijkstra_PathFind : MonoBehaviour
 
     private void Update()
     {
+        if(Vector2.Distance(transform.position, target.transform.position) > 13f )
+        {
+            searchColdown = 1f;
+        }
+        else
+        {
+            searchColdown = 0.5f;
+        }
+
+        Debug.Log("(Vector2.Distance(transform.position, target.transform.position) = " + Vector2.Distance(transform.position, target.transform.position));
+
 
         if (Vector2.Distance(transform.position, target.position) < minDistanceToPlayer) return;
 
@@ -90,7 +101,7 @@ public class Dijkstra_PathFind : MonoBehaviour
         visited.Add(currentNode);
 
         int temp = 0;
-        while (temp <9999)
+        while (temp < 9999)
         {
 
             currentNode = findNextNeightbor(currentNode);
@@ -103,6 +114,12 @@ public class Dijkstra_PathFind : MonoBehaviour
             temp++;
 
         }
+
+        if(temp > 999)
+        {
+
+        }
+
         temp = 0;
 
 
@@ -116,6 +133,8 @@ public class Dijkstra_PathFind : MonoBehaviour
             temp++;
         }
     }
+
+
 
     private bool obstacleCheck( Vector2 toTest)
     {

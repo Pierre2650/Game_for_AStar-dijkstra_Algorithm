@@ -20,7 +20,8 @@ public class PlayerController : MonoBehaviour
     [Header("Mouvement")]
     [SerializeField] private float speed = 0f;
 
-    private  Vector2 horizontal = new Vector2(0.5f, -0.25f) , vertical = new Vector2(0.5f, 0.25f);
+    //private  Vector2 horizontal = new Vector2(0.5f, -0.25f) , vertical = new Vector2(0.5f, 0.25f);
+    private Vector2 horizontal = new Vector2(1f, 0f), vertical = new Vector2(0, 0.5f);
     private Vector2 velocity;
     private Vector2 input = Vector2.zero;
     private Vector2 startPos;
