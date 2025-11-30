@@ -23748,7 +23748,7 @@ Transform:
   m_GameObject: {fileID: 1681976492}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -14.908996, y: 4.4285717, z: 0}
+  m_LocalPosition: {x: -22.843185, y: 0.35229015, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -23771,7 +23771,6 @@ MonoBehaviour:
   obstacles:
     serializedVersion: 2
     m_Bits: 64
-  searchColdown: 0.5
 --- !u!212 &1681976495
 SpriteRenderer:
   m_ObjectHideFlags: 0
