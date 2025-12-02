@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: fb08d6efce63eeb4fa7ace6a463b5f94
+guid: 9cc8bf7056f066f408e126df1892ca38
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 16
+  spritePixelsToUnits: 40
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -97,23 +97,67 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Red Effect Bullet Impact Explosion 32x32_2
+      name: idel 50px 50_0
       rect:
         serializedVersion: 2
-        x: 516
-        y: 441
-        width: 6
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 13
+        y: 0
+        width: 24
+        height: 28
+      alignment: 9
+      pivot: {x: 0.5, y: 0.02882894}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8626faef1c667b44c9422ea7b4b32c09
-      internalID: -1750571746
+      spriteID: 0de03d9bcac4adb488f2e7e4e4346f77
+      internalID: 1374478842
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: idel 50px 50_1
+      rect:
+        serializedVersion: 2
+        x: 63
+        y: 0
+        width: 24
+        height: 28
+      alignment: 9
+      pivot: {x: 0.49723753, y: 0.035932023}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1f620771653e50342a0bd87b55468ac4
+      internalID: -1950052932
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: idel 50px 50_2
+      rect:
+        serializedVersion: 2
+        x: 113
+        y: 0
+        width: 24
+        height: 28
+      alignment: 9
+      pivot: {x: 0.5027631, y: 0.024093842}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 55ff6693fc323b64ebcdb65c4c54bc60
+      internalID: 1613977628
       vertices: []
       indices: 
       edges: []
@@ -122,7 +166,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 0a186a0f772e6014da618d2a945dd5c7
+    spriteID: b4521579cfeec0042937ff84e2df81f1
     internalID: 0
     vertices: []
     indices: 
@@ -132,9 +176,9 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Red Effect Bullet Impact Explosion 32x32_0: 1163147864
-      Red Effect Bullet Impact Explosion 32x32_1: -921353538
-      Red Effect Bullet Impact Explosion 32x32_2: -1750571746
+      idel 50px 50_0: 1374478842
+      idel 50px 50_1: -1950052932
+      idel 50px 50_2: 1613977628
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

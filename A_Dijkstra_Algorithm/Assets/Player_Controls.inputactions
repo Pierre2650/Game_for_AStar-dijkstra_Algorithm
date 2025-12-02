@@ -15,7 +15,7 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Test",
+                    "name": "Bomb",
                     "type": "Button",
                     "id": "f5e6147a-2814-42d0-8bf0-57c95598e356",
                     "expectedControlType": "",
@@ -83,11 +83,11 @@
                 {
                     "name": "",
                     "id": "9c1055da-494b-4742-838a-fb216c443641",
-                    "path": "<Keyboard>/t",
+                    "path": "<Keyboard>/z",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Test",
+                    "action": "Bomb",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

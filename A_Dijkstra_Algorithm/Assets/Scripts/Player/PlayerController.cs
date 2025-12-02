@@ -8,10 +8,11 @@ public class PlayerController : MonoBehaviour
     private SpriteRenderer mySpr;
     private Animator myAni;
     private Rigidbody2D myRB;
-    
 
-    [Header("Projectile Prefab")]
-    //public GameObject atkPrefab;
+
+    [Header("Bomb")]
+    public GameObject bombprefab;
+    private int firePower = 1;
 
     [SerializeField] private float attackColdown = 0.3f;
     private Coroutine canATK = null;
@@ -20,11 +21,11 @@ public class PlayerController : MonoBehaviour
     [Header("Mouvement")]
     [SerializeField] private float speed = 0f;
 
-    //private  Vector2 horizontal = new Vector2(0.5f, -0.25f) , vertical = new Vector2(0.5f, 0.25f);
     private Vector2 horizontal = new Vector2(1f, 0f), vertical = new Vector2(0, 0.5f);
     private Vector2 velocity;
     private Vector2 input = Vector2.zero;
     private Vector2 startPos;
+
 
     [Header("Animations")]
     private bool playDeadAnimation;
@@ -57,13 +58,6 @@ public class PlayerController : MonoBehaviour
     {
 
         setSprite();
-
-        if (attacking && canATK == null)
-        {
-            spawnProjectile();
-            canATK = StartCoroutine(attackOnColdown());
-
-        }
 
 
         velocity = horizontal * input.x + vertical * input.y;
@@ -160,6 +154,30 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public void spawnBomb(InputAction.CallbackContext context)
+    {
+        if (context.performed && canATK == null)
+        {
+            GameObject temp = Instantiate(bombprefab,transform.position, Quaternion.identity);
+            temp.GetComponent<Bomb_Controller>().flamesLength = firePower;
+            canATK = StartCoroutine(attackOnColdown());
+        }
+       
+    }
+
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("fireBonus"))
+        {
+            if(firePower < 11)
+            {
+                firePower++;
+            }
+
+            Destroy(collision.gameObject);
+        }
+    }
 
 
     private IEnumerator attackOnColdown()

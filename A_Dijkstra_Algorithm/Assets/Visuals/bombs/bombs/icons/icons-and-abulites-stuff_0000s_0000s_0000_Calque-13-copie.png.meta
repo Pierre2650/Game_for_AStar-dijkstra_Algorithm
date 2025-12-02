@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: fb08d6efce63eeb4fa7ace6a463b5f94
+guid: 613e26158b6f32843bda26d3a6ac7dfd
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 16
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -95,34 +95,12 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites:
-    - serializedVersion: 2
-      name: Red Effect Bullet Impact Explosion 32x32_2
-      rect:
-        serializedVersion: 2
-        x: 516
-        y: 441
-        width: 6
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8626faef1c667b44c9422ea7b4b32c09
-      internalID: -1750571746
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
+    sprites: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 0a186a0f772e6014da618d2a945dd5c7
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -131,10 +109,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      Red Effect Bullet Impact Explosion 32x32_0: 1163147864
-      Red Effect Bullet Impact Explosion 32x32_1: -921353538
-      Red Effect Bullet Impact Explosion 32x32_2: -1750571746
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

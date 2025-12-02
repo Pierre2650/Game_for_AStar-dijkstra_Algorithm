@@ -37,7 +37,7 @@ public partial class @Player_Controls: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""Test"",
+                    ""name"": ""Bomb"",
                     ""type"": ""Button"",
                     ""id"": ""f5e6147a-2814-42d0-8bf0-57c95598e356"",
                     ""expectedControlType"": """",
@@ -105,11 +105,11 @@ public partial class @Player_Controls: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""9c1055da-494b-4742-838a-fb216c443641"",
-                    ""path"": ""<Keyboard>/t"",
+                    ""path"": ""<Keyboard>/z"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Test"",
+                    ""action"": ""Bomb"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -121,7 +121,7 @@ public partial class @Player_Controls: IInputActionCollection2, IDisposable
         // Controller
         m_Controller = asset.FindActionMap("Controller", throwIfNotFound: true);
         m_Controller_Movement = m_Controller.FindAction("Movement", throwIfNotFound: true);
-        m_Controller_Test = m_Controller.FindAction("Test", throwIfNotFound: true);
+        m_Controller_Bomb = m_Controller.FindAction("Bomb", throwIfNotFound: true);
     }
 
     ~@Player_Controls()
@@ -189,13 +189,13 @@ public partial class @Player_Controls: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_Controller;
     private List<IControllerActions> m_ControllerActionsCallbackInterfaces = new List<IControllerActions>();
     private readonly InputAction m_Controller_Movement;
-    private readonly InputAction m_Controller_Test;
+    private readonly InputAction m_Controller_Bomb;
     public struct ControllerActions
     {
         private @Player_Controls m_Wrapper;
         public ControllerActions(@Player_Controls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Movement => m_Wrapper.m_Controller_Movement;
-        public InputAction @Test => m_Wrapper.m_Controller_Test;
+        public InputAction @Bomb => m_Wrapper.m_Controller_Bomb;
         public InputActionMap Get() { return m_Wrapper.m_Controller; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -208,9 +208,9 @@ public partial class @Player_Controls: IInputActionCollection2, IDisposable
             @Movement.started += instance.OnMovement;
             @Movement.performed += instance.OnMovement;
             @Movement.canceled += instance.OnMovement;
-            @Test.started += instance.OnTest;
-            @Test.performed += instance.OnTest;
-            @Test.canceled += instance.OnTest;
+            @Bomb.started += instance.OnBomb;
+            @Bomb.performed += instance.OnBomb;
+            @Bomb.canceled += instance.OnBomb;
         }
 
         private void UnregisterCallbacks(IControllerActions instance)
@@ -218,9 +218,9 @@ public partial class @Player_Controls: IInputActionCollection2, IDisposable
             @Movement.started -= instance.OnMovement;
             @Movement.performed -= instance.OnMovement;
             @Movement.canceled -= instance.OnMovement;
-            @Test.started -= instance.OnTest;
-            @Test.performed -= instance.OnTest;
-            @Test.canceled -= instance.OnTest;
+            @Bomb.started -= instance.OnBomb;
+            @Bomb.performed -= instance.OnBomb;
+            @Bomb.canceled -= instance.OnBomb;
         }
 
         public void RemoveCallbacks(IControllerActions instance)
@@ -241,6 +241,6 @@ public partial class @Player_Controls: IInputActionCollection2, IDisposable
     public interface IControllerActions
     {
         void OnMovement(InputAction.CallbackContext context);
-        void OnTest(InputAction.CallbackContext context);
+        void OnBomb(InputAction.CallbackContext context);
     }
 }

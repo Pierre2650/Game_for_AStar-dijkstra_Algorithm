@@ -28,6 +28,7 @@ public class Astar : MonoBehaviour
 
     private List<AstarNode> unVisited = new List<AstarNode>();
     private List<AstarNode> visited = new List<AstarNode>();
+    public Vector2 cNode = Vector2.zero;
     private AstarNode currentNode;
     private float minDistanceToPlayer = 0.45f;
 
@@ -267,7 +268,7 @@ public class Astar : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        // Draw a yellow sphere at the transform's position
+       // Draw a yellow sphere at the transform's position
         foreach (AstarNode n in unVisited)
         {
             // Draw a yellow sphere at the transform's position
@@ -278,12 +279,14 @@ public class Astar : MonoBehaviour
         foreach (AstarNode n in visited)
         {
             // Draw a yellow sphere at the transform's position
+          
             Gizmos.color = Color.green;
             Gizmos.DrawWireSphere(n.position, 0.2f);
         }
 
         foreach (Vector2 v in invertedPath)
         {
+            if (v == null) continue;
             Gizmos.color = Color.yellow;
             Gizmos.DrawWireSphere(v, 0.2f);
 
@@ -292,6 +295,7 @@ public class Astar : MonoBehaviour
 
         if (currentNode != null)
         {
+
             Gizmos.color = Color.blue;
             Gizmos.DrawWireSphere(currentNode.position, 0.2f);
         }
