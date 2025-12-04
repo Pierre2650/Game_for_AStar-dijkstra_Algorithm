@@ -20,8 +20,9 @@ public class Astar : MonoBehaviour
         }
     }
 
+    private EnemyController controller;
 
-    public Transform target;
+    private Transform target;
     public float speed;
     public LayerMask obstacles;
     private float rayCircleCastRadius = 0.15f;
@@ -40,8 +41,14 @@ public class Astar : MonoBehaviour
     public float searchColdown = 1;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
+
+    private void Awake()
+    {
+        controller = GetComponent<EnemyController>();
+    }
     void Start()
     {
+        target = controller.playerT;
         calculatePath();
         pathIndex = invertedPath.Count - 1;
     }
@@ -128,7 +135,7 @@ public class Astar : MonoBehaviour
 
             if (Vector2.Distance(currentNode.position, target.position) < minDistanceToPlayer)
             {
-                rayCircleCastRadius = 0.15f;
+                rayCircleCastRadius = 0.18f;
                 nbfailures = 0;
                 break;
             }
@@ -288,7 +295,7 @@ public class Astar : MonoBehaviour
     private void OnDrawGizmos()
     {
        // Draw a yellow sphere at the transform's position
-        foreach (AstarNode n in unVisited)
+        /*foreach (AstarNode n in unVisited)
         {
             // Draw a yellow sphere at the transform's position
             Gizmos.color = Color.red;
@@ -321,7 +328,7 @@ public class Astar : MonoBehaviour
 
             Gizmos.color = Color.blue;
             Gizmos.DrawWireSphere(currentNode.position, 0.2f);
-        }
+        }*/
 
 
     }

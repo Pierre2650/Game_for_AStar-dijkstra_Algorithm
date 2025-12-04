@@ -19,6 +19,10 @@ public class PlayerController : MonoBehaviour
     private Coroutine canATK = null;
     private bool attacking = false;
 
+    [Header("Life")]
+    public int LifePoints = 3;
+    private bool dead = false;
+
     [Header("Mouvement")]
     [SerializeField] private float speed = 0f;
 
@@ -60,9 +64,9 @@ public class PlayerController : MonoBehaviour
 
         setSprite();
 
-
-        velocity = horizontal * input.x + vertical * input.y;
-        //transform.position += (Vector3)(velocity.normalized * speed * Time.deltaTime);
+        if(!dead)
+        { velocity = horizontal * input.x + vertical * input.y; }
+        
 
 
     }
@@ -182,7 +186,12 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.layer == fireLayer)
         {
             Destroy(collision.gameObject);
-            // hurt
+            LifePoints--;
+            if (LifePoints == 0)
+            {
+                dead = true;
+                myRB.linearVelocity = Vector3.zero;
+            }
         }
 
 

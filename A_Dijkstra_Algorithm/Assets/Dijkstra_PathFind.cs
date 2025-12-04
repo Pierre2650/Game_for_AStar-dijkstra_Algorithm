@@ -6,7 +6,9 @@ using Random = UnityEngine.Random;
 
 public class Dijkstra_PathFind : MonoBehaviour
 {
-    public Transform target;
+    private EnemyController controller;
+
+    private Transform target;
     public float speed;
     public LayerMask obstacles;
     private float rayCircleCastRadius =  0.15f;
@@ -28,18 +30,24 @@ public class Dijkstra_PathFind : MonoBehaviour
     private float searchColdown = 3;
 
 
+    private void Awake()
+    {
+        controller = GetComponent<EnemyController>();
+    }
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        target = controller.playerT;
         calculatePath();
         pathIndex = invertedPath.Count - 1;
     }
 
     private void Update()
     {
-        if(Vector2.Distance(transform.position, target.transform.position) > 13f )
+        if(Vector2.Distance(transform.position, target.transform.position) > 10f )
         {
-            searchColdown = 3f;
+            searchColdown = 8f;
         }
         else
         {
@@ -277,14 +285,18 @@ public class Dijkstra_PathFind : MonoBehaviour
 
     }
 
-   
+
+    private void OnDestroy()
+    {
+        controller.spawner.nbDijkstra--;
+    }
 
 
 
     private void OnDrawGizmos()
     {
         // Draw a yellow sphere at the transform's position
-        foreach (Node n in unVisited) {
+        /*foreach (Node n in unVisited) {
             // Draw a yellow sphere at the transform's position
             Gizmos.color = Color.magenta;
             Gizmos.DrawWireSphere(n.position, 0.2f);
@@ -312,7 +324,7 @@ public class Dijkstra_PathFind : MonoBehaviour
         if (currentNode != null) {
             Gizmos.color = Color.blue;
             Gizmos.DrawWireSphere(currentNode.position, 0.2f);
-        }
+        }*/
 
 
     }

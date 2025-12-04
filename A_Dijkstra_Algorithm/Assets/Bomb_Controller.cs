@@ -140,7 +140,7 @@ public class Bomb_Controller : MonoBehaviour
         Collider2D collider = Physics2D.OverlapCircle(toTest, 0.2f);
         if (collider == null) { return false; }
 
-        if(collider.GetComponent<DestroyableObject_Controller>() != null || collider.GetComponent<EnemyController>() != null)
+        if(collider.GetComponent<DestroyableObject_Controller>() != null || collider.GetComponent<EnemyController>() != null || collider.GetComponent<PlayerController>() != null)
         {
             return false;
         }
