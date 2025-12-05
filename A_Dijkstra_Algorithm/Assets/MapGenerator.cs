@@ -6,7 +6,7 @@ public class MapGenerator : MonoBehaviour
 {
     public GameObject horizontalPrefab;
     public GameObject verticalPrefab;
-
+    public GameObject fireBonusPrefab;
     public Vector2 verticalStart;
     public Vector2[] verticalEndStart;
     public int vLength;
@@ -33,6 +33,7 @@ public class MapGenerator : MonoBehaviour
 
     public void generateMap()
     {
+        Instantiate(fireBonusPrefab, new Vector3(0, 0.45f,0),Quaternion.identity);
         generateHorizontalDestroyables();
 
         generateVerticalDestroyables();
@@ -213,7 +214,7 @@ public class MapGenerator : MonoBehaviour
 
     }
 
-    public void destroyALl()
+    public void destroyAll()
     {
         foreach (GameObject obj in Objects.ToList())
         {

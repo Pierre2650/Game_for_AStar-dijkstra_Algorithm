@@ -8,11 +8,19 @@ public class EnemyController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        PlayerController player = collision.GetComponent<PlayerController>();
+        if (player != null)
+        {
+            player.LifePoints = 0;
+
+        }
+
 
         if (collision.gameObject.layer == fireLayer)
         {
             Destroy(collision.gameObject);
             spawner.nbEnemies--;
+            spawner.enemiesList.Remove(gameObject);
             Destroy(gameObject);
         }
 

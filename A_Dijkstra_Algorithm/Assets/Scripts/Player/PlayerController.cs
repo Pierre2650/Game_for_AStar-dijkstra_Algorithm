@@ -24,6 +24,7 @@ public class PlayerController : MonoBehaviour
     private bool dead = false;
 
     [Header("Mouvement")]
+    public bool restrained = false;
     [SerializeField] private float speed = 0f;
 
     private Vector2 horizontal = new Vector2(1f, 0f), vertical = new Vector2(0, 0.5f);
@@ -53,7 +54,7 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-
+        if (restrained) {  return; }
         myRB.AddForce(velocity.normalized * speed);
         
     }
@@ -64,16 +65,22 @@ public class PlayerController : MonoBehaviour
 
         setSprite();
 
-        if(!dead)
+        if(!dead )
         { velocity = horizontal * input.x + vertical * input.y; }
-        
 
+        if (LifePoints == 0)
+        {
+            dead = true;
+            myRB.linearVelocity = Vector3.zero;
+        }
 
     }
 
 
     private void setSprite()
     {
+        if (restrained) { velocity = Vector2.right; }
+
         if(velocity.x < 0f)
         {
             transform.eulerAngles = new Vector3(0, 180, 0);
@@ -187,11 +194,7 @@ public class PlayerController : MonoBehaviour
         {
             Destroy(collision.gameObject);
             LifePoints--;
-            if (LifePoints == 0)
-            {
-                dead = true;
-                myRB.linearVelocity = Vector3.zero;
-            }
+           
         }
 
 

@@ -193,7 +193,15 @@ public class Dijkstra_PathFind : MonoBehaviour
 
         if (result == null) {
             int rand = Random.Range(0, unVisited.Count);
-            result = unVisited[rand];
+
+            try
+            {
+                result = unVisited[rand];
+            }
+            catch
+            {
+                Destroy(gameObject);
+            }
         }
 
       
