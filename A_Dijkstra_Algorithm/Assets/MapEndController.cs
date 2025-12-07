@@ -11,6 +11,8 @@ public class MapEndController : MonoBehaviour
 
     private Vector3 cameraStartPos;
     private Vector3 playerStartPos;
+    private bool cinematique;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -95,6 +97,7 @@ public class MapEndController : MonoBehaviour
 
         player.transform.position = end;
         generator.destroyAll();
+        cinematique = false;
 
 
     }
@@ -102,8 +105,9 @@ public class MapEndController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.GetComponent<PlayerController>() != null)
+        if (collision.GetComponent<PlayerController>() != null && !cinematique)
         {
+            cinematique = true;
             newMap();
             spawnerController.resetAll();
         }

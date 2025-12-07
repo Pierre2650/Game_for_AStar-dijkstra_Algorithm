@@ -33,7 +33,7 @@ public class MapGenerator : MonoBehaviour
 
     public void generateMap()
     {
-
+        Debug.Log("generateMap Called");
         generateCenterBonus();
 
 

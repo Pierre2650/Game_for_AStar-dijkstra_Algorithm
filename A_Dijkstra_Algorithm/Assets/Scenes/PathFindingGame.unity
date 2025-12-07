@@ -83984,7 +83984,7 @@ MonoBehaviour:
   - {x: -10.75, y: -3.49}
   - {x: 5.76, y: 6.26}
   hLength: 9
-  spawnProbability: 40
+  spawnProbability: 48
   Objects: []
 --- !u!1001 &650182224
 PrefabInstance:
