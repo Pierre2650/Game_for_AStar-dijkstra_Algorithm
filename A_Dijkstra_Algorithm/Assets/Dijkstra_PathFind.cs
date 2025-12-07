@@ -8,24 +8,24 @@ public class Dijkstra_PathFind : MonoBehaviour
 {
     private EnemyController controller;
     private Animator myAni;
-    private Transform target;
+
+    [Header("Mouvement")]
     public float speed;
     public LayerMask obstacles;
-    private float rayCircleCastRadius =  0.15f;
+    private Transform target;
+    private float rayCircleCastRadius =  0.18f;
     private int nbfailures = 0;
     private Vector2 horizontal = new Vector2(0.5f, -0.25f), vertical = new Vector2(0.5f, 0.25f);
 
-
+    [Header("Nodes")]
     private List<Node> unVisited = new List<Node>();
     private List<Node> visited = new List<Node>();
     private Node currentNode;
     private float minDistanceToPlayer = 0.45f;
-
-
     private List<Vector2> invertedPath = new List<Vector2>();
     private int pathIndex = 0;
 
-    
+    [Header("Scan")]
     private float searchColdownElapsed = 0;
     private float searchColdown = 8;
 
@@ -59,8 +59,6 @@ public class Dijkstra_PathFind : MonoBehaviour
             searchColdown = 0.5f;
         }
 
-       
-
 
         if (Vector2.Distance(transform.position, target.position) < minDistanceToPlayer) return;
 
@@ -75,6 +73,8 @@ public class Dijkstra_PathFind : MonoBehaviour
         if(searchColdownElapsed > searchColdown)
         {
             invertedPath.Clear();
+            //unVisited.Clear();
+           // visited.Clear();
             calculatePath();
 
             pathIndex = invertedPath.Count - 1;
@@ -150,7 +150,7 @@ public class Dijkstra_PathFind : MonoBehaviour
                 nbfailures++;
                 if (nbfailures > 3)
                 {
-                    rayCircleCastRadius = 0.05f;
+                    rayCircleCastRadius = 0.08f;
                     nbfailures = 0;
                 }
                 break;
@@ -163,7 +163,7 @@ public class Dijkstra_PathFind : MonoBehaviour
 
             if (Vector2.Distance(currentNode.position, target.position) < minDistanceToPlayer)
             {
-                rayCircleCastRadius = 0.15f;
+                rayCircleCastRadius = 0.18f;
                 nbfailures = 0;
                 break;
             }
@@ -334,10 +334,10 @@ public class Dijkstra_PathFind : MonoBehaviour
 
 
 
-    private void OnDrawGizmos()
+   /* private void OnDrawGizmos()
     {
         // Draw a yellow sphere at the transform's position
-        /*foreach (Node n in unVisited) {
+        foreach (Node n in unVisited) {
             // Draw a yellow sphere at the transform's position
             Gizmos.color = Color.magenta;
             Gizmos.DrawWireSphere(n.position, 0.2f);
@@ -365,9 +365,9 @@ public class Dijkstra_PathFind : MonoBehaviour
         if (currentNode != null) {
             Gizmos.color = Color.blue;
             Gizmos.DrawWireSphere(currentNode.position, 0.2f);
-        }*/
+        }
 
 
-    }
+    }*/
 
 }

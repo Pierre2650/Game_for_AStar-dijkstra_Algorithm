@@ -116,31 +116,15 @@ public class PlayerController : MonoBehaviour
         if (dead && !playDeadAnimation ) 
         {
             myAni.SetTrigger("Dead");
+            UIManager.GetComponent<GameOveUIController>().showUI();
             playDeadAnimation = true; 
            
         }
 
         
 
-
-        if (dead && !playDeadAnimation) {
-
-            UIManager.GetComponent<GameOveUIController>().showUI();
-            StartCoroutine(deadControl());
-        }
-
-    }
-
-    private IEnumerator deadControl()
-    {
-        //myAni.SetTrigger("Explosion");
-        playDeadAnimation = true;
-        yield return new WaitForSeconds(1f);
-        
     }
    
-
-      
     public void movementInput(InputAction.CallbackContext context)
     {
         if (context.performed)
@@ -227,10 +211,11 @@ public class PlayerController : MonoBehaviour
 
     private IEnumerator attackOnColdown()
     {
-        UIManager.GetComponent<BombsUiController>().updateNbBombs(currentNbBombs.ToString()) ;
+        UIManager.GetComponent<BombsUiController>().updateNbBombs(currentNbBombs.ToString());
         yield return new WaitForSeconds(attackColdown);
         currentNbBombs++;
         UIManager.GetComponent<BombsUiController>().updateNbBombs(currentNbBombs.ToString());
+    }
 
 
 

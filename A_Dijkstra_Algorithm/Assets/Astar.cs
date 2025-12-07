@@ -1,8 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using static UnityEditor.Searcher.SearcherWindow.Alignment;
-
 public class Astar : MonoBehaviour
 {
     public class AstarNode : Node
@@ -23,21 +21,25 @@ public class Astar : MonoBehaviour
     private EnemyController controller;
     private Animator myAni;
 
-    private Transform target;
+    [Header("Mouvement")]
     public float speed;
     public LayerMask obstacles;
+    private Transform target;
     private float rayCircleCastRadius = 0.15f;
     private int nbfailures = 0;
     private Vector2 horizontal = new Vector2(0.5f, -0.25f), vertical = new Vector2(0.5f, 0.25f);
 
+
+    [Header("Nodes")]
     private List<AstarNode> unVisited = new List<AstarNode>();
     private List<AstarNode> visited = new List<AstarNode>();
     private AstarNode currentNode;
     private float minDistanceToPlayer = 0.45f;
-
     private List<Vector2> invertedPath = new List<Vector2>();
     private int pathIndex = 0;
 
+
+    [Header("Scan")]
     private float searchColdownElapsed = 0;
     public float searchColdown = 1;
 
@@ -72,7 +74,8 @@ public class Astar : MonoBehaviour
         if (searchColdownElapsed > searchColdown)
         {
             invertedPath.Clear();
-
+            //unVisited.Clear();
+            //visited.Clear();
             calculatePath();
 
             pathIndex = invertedPath.Count - 1;
@@ -322,11 +325,11 @@ public class Astar : MonoBehaviour
         }
     }
 
-
+/*
     private void OnDrawGizmos()
     {
        // Draw a yellow sphere at the transform's position
-        /*foreach (AstarNode n in unVisited)
+        foreach (AstarNode n in unVisited)
         {
             // Draw a yellow sphere at the transform's position
             Gizmos.color = Color.red;
@@ -359,8 +362,8 @@ public class Astar : MonoBehaviour
 
             Gizmos.color = Color.blue;
             Gizmos.DrawWireSphere(currentNode.position, 0.2f);
-        }*/
+        }
 
 
-    }
+    }*/
 }

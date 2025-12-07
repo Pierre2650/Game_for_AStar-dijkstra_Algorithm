@@ -23,7 +23,6 @@ public class EnemyController : MonoBehaviour
         if (player != null)
         {
             player.LifePoints = 0;
-
         }
 
 
