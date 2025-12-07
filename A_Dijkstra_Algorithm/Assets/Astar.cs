@@ -21,6 +21,7 @@ public class Astar : MonoBehaviour
     }
 
     private EnemyController controller;
+    private Animator myAni;
 
     private Transform target;
     public float speed;
@@ -45,6 +46,7 @@ public class Astar : MonoBehaviour
     private void Awake()
     {
         controller = GetComponent<EnemyController>();
+        myAni = GetComponent<Animator>();
     }
     void Start()
     {
@@ -69,15 +71,38 @@ public class Astar : MonoBehaviour
         searchColdownElapsed += Time.deltaTime;
         if (searchColdownElapsed > searchColdown)
         {
-
-            visited.Clear();
-            unVisited.Clear();
             invertedPath.Clear();
 
             calculatePath();
 
             pathIndex = invertedPath.Count - 1;
             searchColdownElapsed = 0;
+        }
+
+    }
+
+    private void setSprite(Vector2 velocity)
+    {
+
+        if (velocity.x < 0f)
+        {
+            transform.eulerAngles = new Vector3(0, 180, 0);
+        }
+        else
+        {
+            transform.eulerAngles = Vector3.zero;
+        }
+
+        if (velocity.y < 0 && velocity.x == 0f)
+        {
+            myAni.SetFloat("VelocityX", Mathf.Abs(velocity.y));
+        }
+        else
+        {
+
+            myAni.SetFloat("VelocityY", velocity.y);
+            myAni.SetFloat("VelocityX", Mathf.Abs(velocity.x));
+
         }
 
     }
@@ -101,6 +126,9 @@ public class Astar : MonoBehaviour
 
         transform.position = Vector2.MoveTowards(transform.position, nextPos, speed * Time.deltaTime);
 
+        Vector2 velocity = nextPos - (Vector2)transform.position;
+        setSprite(velocity.normalized);
+
         if (Vector2.Distance(transform.position, nextPos) < 0.01f)
         {
             pathIndex--; // Move to next node
@@ -123,7 +151,7 @@ public class Astar : MonoBehaviour
             {
                 nbfailures++;
                 if (nbfailures > 3) {
-                    rayCircleCastRadius = 0.05f;
+                    rayCircleCastRadius = 0.08f;
                     nbfailures = 0;
                 }
                 break;
@@ -145,7 +173,8 @@ public class Astar : MonoBehaviour
         }
         temp = 0;
 
-
+        unVisited.Clear();
+        visited.Remove(currentNode);
         invertedPath.Add(currentNode.position);
         Node nextNode = currentNode.parent;
 
@@ -155,6 +184,8 @@ public class Astar : MonoBehaviour
             nextNode = nextNode.parent;
             temp++;
         }
+
+        visited.Clear();
     }
 
     private AstarNode findNextNeightbor(AstarNode currentNode)

@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1866060770298186642}
   - component: {fileID: 1502870278065243463}
+  - component: {fileID: 5517756611496024270}
   - component: {fileID: 2189174740700888150}
   - component: {fileID: 4362345074437909264}
   - component: {fileID: 1688452284706095519}
@@ -91,6 +92,28 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 1
+--- !u!95 &5517756611496024270
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 433897880384654631}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 99f94cc0bbecf6542bc386c302c270b8, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!58 &2189174740700888150
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -166,7 +189,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac8a6a4cec7d46f46b89f4b656b14832, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
   speed: 1
   obstacles:
     serializedVersion: 2
@@ -184,4 +206,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawner: {fileID: 0}
+  playerT: {fileID: 0}
+  extraLife: {fileID: 3120453904257866447, guid: ff7c479ffad9f2f4c8fd6ce096ab3a4e, type: 3}
   fireLayer: 7

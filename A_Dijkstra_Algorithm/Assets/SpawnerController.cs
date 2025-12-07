@@ -13,6 +13,7 @@ public class SpawnerController : MonoBehaviour
     public float spawnRate;
     private float spawnElapsed;
 
+    public float enemiesSpeed = 1;
     public int nbEnemies = 0;
     public int nbDijkstra = 0;
     public int maxNbEnemies = 4;
@@ -44,6 +45,7 @@ public class SpawnerController : MonoBehaviour
                     enemiesList.Add(temp);
                     temp.GetComponent<EnemyController>().spawner = this;
                     temp.GetComponent<EnemyController>().playerT = player;
+                    temp.GetComponent<Dijkstra_PathFind>().speed = enemiesSpeed;
                     nbDijkstra++;
                 }
                 else
@@ -52,6 +54,7 @@ public class SpawnerController : MonoBehaviour
                     enemiesList.Add(temp);
                     temp.GetComponent<EnemyController>().spawner = this;
                     temp.GetComponent<EnemyController>().playerT = player;
+                    temp.GetComponent<Astar>().speed = enemiesSpeed;
                 }
 
                 nbEnemies++;
@@ -70,7 +73,7 @@ public class SpawnerController : MonoBehaviour
 
     public void raiseDifficulty()
     {
-        int rand = Random.Range(0, 2);
+        int rand = Random.Range(0, 3);
 
         if (rand == 0) {
             if (spawnRate > 4)
@@ -78,11 +81,20 @@ public class SpawnerController : MonoBehaviour
                 spawnRate--;
             }
         }
-        else
+        if (rand == 1)
         {
+
             if (maxNbEnemies < 8)
             {
                 maxNbEnemies++;
+            }
+
+        }
+        else
+        {
+            if (enemiesSpeed < 2.5f)
+            {
+                enemiesSpeed += 0.25f;
             }
 
         }

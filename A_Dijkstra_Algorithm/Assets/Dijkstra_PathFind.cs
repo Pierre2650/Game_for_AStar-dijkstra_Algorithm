@@ -7,7 +7,7 @@ using Random = UnityEngine.Random;
 public class Dijkstra_PathFind : MonoBehaviour
 {
     private EnemyController controller;
-
+    private Animator myAni;
     private Transform target;
     public float speed;
     public LayerMask obstacles;
@@ -19,7 +19,7 @@ public class Dijkstra_PathFind : MonoBehaviour
     private List<Node> unVisited = new List<Node>();
     private List<Node> visited = new List<Node>();
     private Node currentNode;
-    private float minDistanceToPlayer = 0.55f;
+    private float minDistanceToPlayer = 0.45f;
 
 
     private List<Vector2> invertedPath = new List<Vector2>();
@@ -27,12 +27,13 @@ public class Dijkstra_PathFind : MonoBehaviour
 
     
     private float searchColdownElapsed = 0;
-    private float searchColdown = 3;
+    private float searchColdown = 8;
 
 
     private void Awake()
     {
         controller = GetComponent<EnemyController>();
+        myAni = GetComponent<Animator>();
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -48,6 +49,10 @@ public class Dijkstra_PathFind : MonoBehaviour
         if(Vector2.Distance(transform.position, target.transform.position) > 10f )
         {
             searchColdown = 8f;
+        }
+        else if (Vector2.Distance(transform.position, target.transform.position) > 5f &&  Vector2.Distance(transform.position, target.transform.position) < 10f)
+        {
+            searchColdown = 4f;
         }
         else
         {
@@ -69,11 +74,7 @@ public class Dijkstra_PathFind : MonoBehaviour
         searchColdownElapsed += Time.deltaTime;
         if(searchColdownElapsed > searchColdown)
         {
-
-            visited.Clear();
-            unVisited.Clear();
             invertedPath.Clear();
-
             calculatePath();
 
             pathIndex = invertedPath.Count - 1;
@@ -81,6 +82,31 @@ public class Dijkstra_PathFind : MonoBehaviour
         }
     }
 
+    private void setSprite(Vector2 velocity)
+    {
+
+        if (velocity.x < 0f)
+        {
+            transform.eulerAngles = new Vector3(0, 180, 0);
+        }
+        else
+        {
+            transform.eulerAngles = Vector3.zero;
+        }
+
+        if (velocity.y < 0 && velocity.x == 0f)
+        {
+            myAni.SetFloat("VelocityX", Mathf.Abs(velocity.y));
+        }
+        else
+        {
+
+            myAni.SetFloat("VelocityY", velocity.y);
+            myAni.SetFloat("VelocityX", Mathf.Abs(velocity.x));
+
+        }
+
+    }
     private void followPath()
     {
 
@@ -100,6 +126,9 @@ public class Dijkstra_PathFind : MonoBehaviour
 
         transform.position = Vector2.MoveTowards(transform.position, nextPos, speed * Time.deltaTime);
 
+        Vector2 velocity = nextPos - (Vector2)transform.position;
+        setSprite(velocity.normalized);
+
         if (Vector2.Distance(transform.position, nextPos) < 0.01f)
         {
             pathIndex--; // Move to next node
@@ -111,7 +140,7 @@ public class Dijkstra_PathFind : MonoBehaviour
         visited.Add(currentNode);
 
         int temp = 0;
-        while (temp < 9999)
+        while (temp < 999)
         {
 
 
@@ -145,16 +174,20 @@ public class Dijkstra_PathFind : MonoBehaviour
 
         temp = 0;
 
-
+        unVisited.Clear();
+        visited.Remove(currentNode);
         invertedPath.Add(currentNode.position);
         Node nextNode = currentNode.parent;
 
         while (nextNode != null && temp < 999)
         {
+            visited.Remove(currentNode);
             invertedPath.Add(nextNode.position);
             nextNode = nextNode.parent;
             temp++;
         }
+
+        visited.Clear();
     }
 
 

@@ -6,7 +6,7 @@ public class MapGenerator : MonoBehaviour
 {
     public GameObject horizontalPrefab;
     public GameObject verticalPrefab;
-    public GameObject fireBonusPrefab;
+    public GameObject[] BonusesPrefab;
     public Vector2 verticalStart;
     public Vector2[] verticalEndStart;
     public int vLength;
@@ -33,7 +33,10 @@ public class MapGenerator : MonoBehaviour
 
     public void generateMap()
     {
-        Instantiate(fireBonusPrefab, new Vector3(0, 0.45f,0),Quaternion.identity);
+
+        generateCenterBonus();
+
+
         generateHorizontalDestroyables();
 
         generateVerticalDestroyables();
@@ -47,6 +50,15 @@ public class MapGenerator : MonoBehaviour
 
     }
 
+    private void generateCenterBonus()
+    {
+        int rand = rand = Random.Range(0, BonusesPrefab.Length);
+
+        Instantiate(BonusesPrefab[rand], new Vector3(0, 0.45f, 0), Quaternion.identity);
+
+
+
+    }
     private void generateVerticalDestroyables()
     {
         int rand = 0;

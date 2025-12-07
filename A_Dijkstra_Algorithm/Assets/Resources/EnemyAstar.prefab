@@ -10,10 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 4748036849362077337}
   - component: {fileID: 2469463278489164924}
+  - component: {fileID: 7343444802178152862}
   - component: {fileID: 9143374954385153944}
+  - component: {fileID: 1559200532140116592}
   - component: {fileID: 4956201208268265061}
   - component: {fileID: 462448972534519273}
-  - component: {fileID: 1559200532140116592}
   m_Layer: 0
   m_Name: EnemyAstar
   m_TagString: Untagged
@@ -91,6 +92,28 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 1
+--- !u!95 &7343444802178152862
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5915863753919117119}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5132fced94865fd4c9a841cd24353c4f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!58 &9143374954385153944
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -127,38 +150,6 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0.18}
   m_Radius: 0.21
---- !u!114 &4956201208268265061
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5915863753919117119}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a940161cdb0a4ff43b8fa9c47d8979b3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 0}
-  speed: 1
-  obstacles:
-    serializedVersion: 2
-    m_Bits: 64
-  searchColdown: 0.5
---- !u!114 &462448972534519273
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5915863753919117119}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f61d4e975eea6241a1c4f43e7590365, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spawner: {fileID: 0}
-  fireLayer: 7
 --- !u!50 &1559200532140116592
 Rigidbody2D:
   serializedVersion: 5
@@ -186,3 +177,36 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &4956201208268265061
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5915863753919117119}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a940161cdb0a4ff43b8fa9c47d8979b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 1
+  obstacles:
+    serializedVersion: 2
+    m_Bits: 64
+  searchColdown: 0.5
+--- !u!114 &462448972534519273
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5915863753919117119}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f61d4e975eea6241a1c4f43e7590365, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawner: {fileID: 0}
+  playerT: {fileID: 0}
+  extraLife: {fileID: 3120453904257866447, guid: ff7c479ffad9f2f4c8fd6ce096ab3a4e, type: 3}
+  fireLayer: 7

@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 16
+  spritePixelsToUnits: 26
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -108,12 +108,166 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: 20240427cleric-walkingNE_0
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 36
+        width: 15
+        height: 26
+      alignment: 9
+      pivot: {x: 0.49610463, y: 0.025806133}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5a0a4c531527d8f4db089fd7e8429b58
+      internalID: -721577753
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 20240427cleric-walkingNE_1
+      rect:
+        serializedVersion: 2
+        x: 39
+        y: 36
+        width: 17
+        height: 25
+      alignment: 9
+      pivot: {x: 0.5, y: 0.030211182}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fde4537273c72d14b8ada4530ceabeea
+      internalID: 231064787
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 20240427cleric-walkingNE_2
+      rect:
+        serializedVersion: 2
+        x: 70
+        y: 36
+        width: 20
+        height: 24
+      alignment: 9
+      pivot: {x: 0.5, y: 0.032548428}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 719d33bbe0df3874391af0cb3085a9e9
+      internalID: -1128221239
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 20240427cleric-walkingNE_3
+      rect:
+        serializedVersion: 2
+        x: 103
+        y: 36
+        width: 17
+        height: 25
+      alignment: 9
+      pivot: {x: 0.5000005, y: 0.030211182}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3d0a79aad05b7de4da8163f3e54c661a
+      internalID: 700429837
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 20240427cleric-walkingNE_5
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 4
+        width: 15
+        height: 25
+      alignment: 9
+      pivot: {x: 0.5, y: 0.025536614}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fb422332673bc5545b019617d4711e0e
+      internalID: 289335913
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 20240427cleric-walkingNE_6
+      rect:
+        serializedVersion: 2
+        x: 71
+        y: 5
+        width: 17
+        height: 23
+      alignment: 9
+      pivot: {x: 0.4965632, y: 0.03254826}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9c6a9c168e84631468b0a6071c0fe184
+      internalID: -1529421070
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 20240427cleric-walkingNE_7
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 4
+        width: 15
+        height: 25
+      alignment: 9
+      pivot: {x: 0.49610442, y: 0.03254839}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 62693f5ed53a15d4390d86bf4dbc948c
+      internalID: 1750528480
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 0a125296adb5470429fcf888b091a353
     internalID: 0
     vertices: []
     indices: 
@@ -122,7 +276,15 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      20240427cleric-walkingNE_0: -721577753
+      20240427cleric-walkingNE_1: 231064787
+      20240427cleric-walkingNE_2: -1128221239
+      20240427cleric-walkingNE_3: 700429837
+      20240427cleric-walkingNE_4: 18538224
+      20240427cleric-walkingNE_5: 289335913
+      20240427cleric-walkingNE_6: -1529421070
+      20240427cleric-walkingNE_7: 1750528480
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

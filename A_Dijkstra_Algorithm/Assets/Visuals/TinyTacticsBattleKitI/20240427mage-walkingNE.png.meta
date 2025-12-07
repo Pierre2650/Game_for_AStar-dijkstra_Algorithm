@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 16
+  spritePixelsToUnits: 26
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -108,12 +108,166 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: 20240427mage-walkingNE_0
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 36
+        width: 21
+        height: 28
+      alignment: 9
+      pivot: {x: 0.5027824, y: 0.030461583}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 31db8208849db03418b6a83e474839b5
+      internalID: -2021067522
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 20240427mage-walkingNE_1
+      rect:
+        serializedVersion: 2
+        x: 37
+        y: 36
+        width: 21
+        height: 27
+      alignment: 9
+      pivot: {x: 0.49721745, y: 0.021727668}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d8d0ccfc8fe242d42a5361b3f3cc2bdf
+      internalID: -1903332212
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 20240427mage-walkingNE_2
+      rect:
+        serializedVersion: 2
+        x: 70
+        y: 36
+        width: 20
+        height: 27
+      alignment: 9
+      pivot: {x: 0.5, y: 0.026055936}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8d18a25fb9dbcfc4daeccc4beb98fe0a
+      internalID: -1443938404
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 20240427mage-walkingNE_3
+      rect:
+        serializedVersion: 2
+        x: 101
+        y: 36
+        width: 21
+        height: 27
+      alignment: 9
+      pivot: {x: 0.49443525, y: 0.02822}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 90a669b3cf62c1448af7b789e67189bb
+      internalID: 1872969303
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 20240427mage-walkingNE_5
+      rect:
+        serializedVersion: 2
+        x: 37
+        y: 4
+        width: 21
+        height: 27
+      alignment: 9
+      pivot: {x: 0.49721745, y: 0.028219877}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9c0ac5f1a904ab14f86d3029f231a971
+      internalID: 619780947
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 20240427mage-walkingNE_6
+      rect:
+        serializedVersion: 2
+        x: 70
+        y: 5
+        width: 19
+        height: 26
+      alignment: 9
+      pivot: {x: 0.5000004, y: 0.021311522}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2c88324388e47e744a7696f8a16ca40d
+      internalID: -922870740
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 20240427mage-walkingNE_7
+      rect:
+        serializedVersion: 2
+        x: 101
+        y: 4
+        width: 21
+        height: 27
+      alignment: 9
+      pivot: {x: 0.4972178, y: 0.023891678}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f3c3c4e7697d0fb4a89d174e48228c8a
+      internalID: -221375253
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: a28beae5704ece84fb56c0969c028b81
     internalID: 0
     vertices: []
     indices: 
@@ -122,7 +276,15 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      20240427mage-walkingNE_0: -2021067522
+      20240427mage-walkingNE_1: -1903332212
+      20240427mage-walkingNE_2: -1443938404
+      20240427mage-walkingNE_3: 1872969303
+      20240427mage-walkingNE_4: 647334423
+      20240427mage-walkingNE_5: 619780947
+      20240427mage-walkingNE_6: -922870740
+      20240427mage-walkingNE_7: -221375253
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -55,6 +55,7 @@ public class MapEndController : MonoBehaviour
             elapsed += Time.deltaTime;
             yield return null;
         }
+
         cameraT.position = end;
         generator.destroyAll();
 

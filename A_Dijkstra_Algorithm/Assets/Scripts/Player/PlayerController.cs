@@ -11,6 +11,8 @@ public class PlayerController : MonoBehaviour
 
 
     [Header("Bomb")]
+    public int nbBombs;
+    private int currentNbBombs;
     public GameObject bombprefab;
     private int firePower = 1;
     public int fireLayer = 0;
@@ -22,6 +24,7 @@ public class PlayerController : MonoBehaviour
     [Header("Life")]
     public int LifePoints = 3;
     private bool dead = false;
+    private float hurtColdown = 0.3f;
 
     [Header("Mouvement")]
     public bool restrained = false;
@@ -36,6 +39,10 @@ public class PlayerController : MonoBehaviour
     [Header("Animations")]
     private bool playDeadAnimation;
 
+    [Header("UI")]
+    public GameObject UIManager;
+    private Coroutine hurtColdownC;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
     void Start()
@@ -47,7 +54,7 @@ public class PlayerController : MonoBehaviour
         myAni = GetComponent<Animator>();
 
         startPos = transform.position;
- 
+        currentNbBombs = nbBombs;
 
 
     }
@@ -68,10 +75,11 @@ public class PlayerController : MonoBehaviour
         if(!dead )
         { velocity = horizontal * input.x + vertical * input.y; }
 
-        if (LifePoints == 0)
+        if (LifePoints <= 0)
         {
             dead = true;
             myRB.linearVelocity = Vector3.zero;
+            velocity = Vector3.zero;
         }
 
     }
@@ -105,55 +113,34 @@ public class PlayerController : MonoBehaviour
         
 
 
-        /*if (!myHealth.isDead) 
-        { 
-
-            playDeadAnimation = false; 
-            if (!boostFX.activeSelf) {
-                myAni.SetBool("IsDead", myHealth.isDead);
-                mySpr.enabled = true;
-                boostFX.SetActive(true); 
-            } 
+        if (dead && !playDeadAnimation ) 
+        {
+            myAni.SetTrigger("Dead");
+            playDeadAnimation = true; 
+           
         }
 
         
 
 
-        if (myHealth.isDead && !playDeadAnimation) {
+        if (dead && !playDeadAnimation) {
+
+            UIManager.GetComponent<GameOveUIController>().showUI();
             StartCoroutine(deadControl());
-        }*/
+        }
 
     }
 
     private IEnumerator deadControl()
     {
-        //boostFX.SetActive(false);
-        //myAni.SetBool("IsDead", myHealth.isDead);
         //myAni.SetTrigger("Explosion");
         playDeadAnimation = true;
-
         yield return new WaitForSeconds(1f);
-
-        mySpr.enabled = false;
-        transform.position = startPos;
         
     }
-    private void spawnProjectile()
-    {
-       // Instantiate(atkPrefab, transform.position, Quaternion.identity, transform.parent);
-    }
-
-    private void Mouvement(Vector2 dir)
-    {
-        //if (myHealth.isDead) { velocity = Vector2.zero; return; }
-        //if (velocity == Vector2.zero ) { myRB.linearVelocity = Vector2.zero; return; 
-
-       transform.Translate(dir * speed);
-
-    }
-
- 
    
+
+      
     public void movementInput(InputAction.CallbackContext context)
     {
         if (context.performed)
@@ -168,11 +155,13 @@ public class PlayerController : MonoBehaviour
 
     public void spawnBomb(InputAction.CallbackContext context)
     {
-        if (context.performed && canATK == null)
+        if (context.performed && currentNbBombs > 0)
         {
             GameObject temp = Instantiate(bombprefab,transform.position, Quaternion.identity);
             temp.GetComponent<Bomb_Controller>().flamesLength = firePower;
-            canATK = StartCoroutine(attackOnColdown());
+
+            currentNbBombs--;
+            StartCoroutine(attackOnColdown());
         }
        
     }
@@ -180,20 +169,55 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("fireBonus"))
+        switch (collision.tag)
         {
-            if(firePower < 11)
-            {
-                firePower++;
-            }
+            case "fireBonus":
+                if (firePower < 11)
+                {
+                    firePower++;
+                }
 
-            Destroy(collision.gameObject);
+                Destroy(collision.gameObject);
+
+                break;
+            case "nbBombBonus":
+                if (nbBombs < 5)
+                {
+                    nbBombs++;
+                }
+
+                currentNbBombs = nbBombs;
+                UIManager.GetComponent<BombsUiController>().updateNbBombs(currentNbBombs.ToString());
+                Destroy(collision.gameObject);
+
+                break;
+            case "speedBonus":
+                if (speed < 140)
+                {
+                    speed+=10;
+                }
+
+                Destroy(collision.gameObject);
+                break;
+
+            case "extraLife":
+                if (LifePoints < 3)
+                {
+                    LifePoints++;
+                    UIManager.GetComponent<LifesUIController>().lifeGained();
+                }
+
+                Destroy(collision.gameObject);
+                break;
         }
+        
 
-        if (collision.gameObject.layer == fireLayer)
+        if (collision.gameObject.layer == fireLayer && hurtColdownC == null)
         {
             Destroy(collision.gameObject);
             LifePoints--;
+            hurtColdownC = StartCoroutine(hurtOnColdown());
+            UIManager.GetComponent<LifesUIController>().lifeLost();
            
         }
 
@@ -203,9 +227,20 @@ public class PlayerController : MonoBehaviour
 
     private IEnumerator attackOnColdown()
     {
+        UIManager.GetComponent<BombsUiController>().updateNbBombs(currentNbBombs.ToString()) ;
         yield return new WaitForSeconds(attackColdown);
-        canATK = null;
+        currentNbBombs++;
+        UIManager.GetComponent<BombsUiController>().updateNbBombs(currentNbBombs.ToString());
+
+
+
+    private IEnumerator hurtOnColdown()
+    {
+        
+        yield return new WaitForSeconds(hurtColdown);
+
+        hurtColdownC = null;
     }
 
-  
+
 }

@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 3
   tags:
   - fireBonus
+  - nbBombBonus
+  - speedBonus
+  - extraLife
   layers:
   - Default
   - TransparentFX

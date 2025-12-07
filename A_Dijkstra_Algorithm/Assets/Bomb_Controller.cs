@@ -64,6 +64,8 @@ public class Bomb_Controller : MonoBehaviour
     {
         yield return new WaitForSeconds(0.85f);
         spawnFire = true;
+        
+        Instantiate(firePrefab, new Vector2(transform.position.x, transform.position.y + 0.2f), transform.rotation, transform.parent);
         //Destroy(gameObject);
     }
     private void spawnFlames()

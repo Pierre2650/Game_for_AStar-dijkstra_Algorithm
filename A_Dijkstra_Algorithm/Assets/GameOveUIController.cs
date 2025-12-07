@@ -1,16 +1,21 @@
+using UnityEditor.SearchService;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameOveUIController : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+
+    public GameObject uiScreen;
+    public SpawnerController spawner;
+    public void showUI()
     {
-        
+        uiScreen.SetActive(true);
+        spawner.resetAll();
+
     }
 
-    // Update is called once per frame
-    void Update()
+    public void reStart()
     {
-        
+        SceneManager.LoadScene("PathFindingGame");
     }
 }
