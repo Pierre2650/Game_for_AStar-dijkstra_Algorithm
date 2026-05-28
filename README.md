@@ -1,14 +1,22 @@
-#Bomberman Like Game 
-## PathFinding Algortihms Implementation
-Unity project for subdivision algorithms.
+# Bomberman Like Game 
+## Path Finding Algortihms Implementation
+Unity project for Djiskstra's and A* algorithms.
 
 ## Description
-This directory contains the source code of a Unity project in which I developed a script implementing Chaikin's corner-cutting algorithm and Loop's subdivision algorithm.
-The script allows you to configure the level of subdivision for both graphs and meshes.
+This repository contains the source code of a Unity project in which I developed a mini Bomberman-style game to implement and compare Dijkstra’s and A* pathfinding algorithms, where the objective is to survive as long as possible.
 
-##  Subdivision Results 
-### Chakin's
-![Parametrage](Images/Chakins.gif)
+The game includes the core Bomberman mechanics, featuring a map that randomly generates destructible obstacles. Each time you destroy these objects or defeat an enemy, you can obtain upgrades that increase the number of bombs you can place, your movement speed, or your health points.
 
-### Loop's
-#### Simple Cube Mesh
+The enemies use AI behavior to pursue the player by implementing either Dijkstra’s or A* pathfinding algorithms.
+
+##  General Gameplay
+### Advancing
+
+### Killing enemies
+
+
+## Path Find Visualization”
+
+
+## Disclaimer
+All visual assets used are royalty-free and can be found on itch.io.
