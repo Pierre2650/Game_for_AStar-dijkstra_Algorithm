@@ -15,7 +15,10 @@ The enemies use AI behavior to pursue the player by implementing either Dijkstra
 ### Killing enemies
 
 
-## Path Find Visualization”
+## Path Find Visualization
+### Djiskstra
+
+### A*
 
 
 ## Disclaimer
