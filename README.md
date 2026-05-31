@@ -10,16 +10,16 @@ The game includes the core Bomberman mechanics, featuring a map that randomly ge
 The enemies use AI behavior to pursue the player by implementing either Dijkstra’s or A* pathfinding algorithms.
 
 ##  General Gameplay
-### Advancing
-
-### Killing enemies
-
+![Parametrage](Images/Gameplay0.gif)
+![Parametrage](Images/Gameplay1.gif)
+![Parametrage](Images/Advancing.gif)
 
 ## Path Find Visualization
 ### Djiskstra
+![Parametrage](Images/Dijkstra.gif)
 
 ### A*
-
+![Parametrage](Images/AStar.gif)
 
 ## Disclaimer
 All visual assets used are royalty-free and can be found on itch.io.
